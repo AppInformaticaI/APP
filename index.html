@@ -1,7 +1,3 @@
-<?php
-  // index.php
-  $current = $_SERVER['REQUEST_URI'];
-?>
 <!DOCTYPE html>
 <html lang="es" class="scroll-smooth">
 <head>
@@ -29,96 +25,87 @@
   <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet"/>
   <!-- Ocultar antes de Alpine -->
   <style>[x-cloak]{display:none!important}</style>
-<style>
-  /* Destellos simples alrededor del texto */
-  .sparkle {
-    position: relative;
-    display: inline-block;
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent;
-  }
-  .sparkle::before,
-  .sparkle::after,
-  .sparkle-dot {
-    content: '';
-    position: absolute;
-    width: 4px;
-    height: 4px;
-    border-radius: 50%;
-    opacity: 0;
-    animation: sparkle 2s infinite ease-in-out;
-    background: #2563EB; /* primary color */
-  }
-  /* Tercer destello */
-  .sparkle-dot {
-    animation-delay: 0.5s;
-  }
-  /* Modo oscuro: destellos blancos */
-  .dark .sparkle::before,
-  .dark .sparkle::after,
-  .dark .sparkle-dot {
-    background: #fff;
-  }
-  /* Posiciones */
-  .sparkle::before {
-    top: -4px;
-    left: 20%;
-    animation-delay: 0s;
-  }
-  .sparkle::after {
-    top: 100%;
-    left: 80%;
-    animation-delay: 1s;
-  }
-  .sparkle-dot {
-    top: 40%;
-    left: 50%;
-  }
-  @keyframes sparkle {
-    0%, 80%, 100% {
+  <style>
+    /* Destellos simples alrededor del texto */
+    .sparkle {
+      position: relative;
+      display: inline-block;
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+    .sparkle::before,
+    .sparkle::after,
+    .sparkle-dot {
+      content: '';
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
       opacity: 0;
-      transform: scale(0.5) rotate(0deg);
+      animation: sparkle 2s infinite ease-in-out;
+      background: #2563EB; /* primary color */
     }
-    85% {
-      opacity: 1;
-      transform: scale(1.2) rotate(45deg);
+    /* Tercer destello */
+    .sparkle-dot {
+      animation-delay: 0.5s;
     }
-  }
-</style>
-
-
-
+    /* Modo oscuro: destellos blancos */
+    .dark .sparkle::before,
+    .dark .sparkle::after,
+    .dark .sparkle-dot {
+      background: #fff;
+    }
+    /* Posiciones */
+    .sparkle::before {
+      top: -4px;
+      left: 20%;
+      animation-delay: 0s;
+    }
+    .sparkle::after {
+      top: 100%;
+      left: 80%;
+      animation-delay: 1s;
+    }
+    .sparkle-dot {
+      top: 40%;
+      left: 50%;
+    }
+    @keyframes sparkle {
+      0%, 80%, 100% {
+        opacity: 0;
+        transform: scale(0.5) rotate(0deg);
+      }
+      85% {
+        opacity: 1;
+        transform: scale(1.2) rotate(45deg);
+      }
+    }
+  </style>
 </head>
 
 <body x-data="{ mobileOpen: false }" class="bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-gray-200">
 
-   <!-- Barra Superior -->
+  <!-- Barra Superior -->
   <div class="fixed top-0 left-0 right-0 z-50 bg-gray-100 dark:bg-gray-800">
     <div class="max-w-7xl mx-auto px-4 py-1 flex flex-wrap md:flex-nowrap justify-between items-center text-xs md:text-sm text-gray-600 dark:text-gray-300">
-      <!-- Texto principal -->
       <div class="whitespace-nowrap text-center md:text-left">
         Entregas instantáneas · Soporte 24/7 · Pagos 100% seguros
       </div>
-      <!-- Enlaces -->
       <div class="flex flex-wrap md:flex-nowrap items-center space-x-2 md:space-x-4">
-        <a href="/login"    class="hover:text-primary transition">Iniciar sesión</a>
+        <a href="/login" class="hover:text-primary transition">Iniciar sesión</a>
         <a href="registro.php" class="hover:text-primary transition">Regístrate</a>
         <button class="hover:text-primary transition">ES | EN</button>
       </div>
     </div>
   </div>
 
-
   <!-- Header Principal -->
   <header id="site-header"
-          class="
-            fixed w-full top-6 md:top-6 z-40 py-4
-            bg-white dark:bg-gray-900
-            md:bg-transparent md:dark:bg-transparent
-            transition-all duration-300
-          ">
-    <!-- Fila superior -->
+          class="fixed w-full top-6 md:top-6 z-40 py-4
+                 bg-white dark:bg-gray-900
+                 md:bg-transparent md:dark:bg-transparent
+                 transition-all duration-300">
     <div class="max-w-7xl mx-auto flex items-center justify-between px-6">
       <!-- Logo -->
       <a href="/" class="flex items-center space-x-3">
@@ -148,70 +135,50 @@
       </form>
 
       <!-- Carrito, lupa móvil, menú móvil, toggle oscuro -->
-<div class="flex items-center space-x-4">
-  <!-- Carrito -->
-  <a id="cart-link" href="/carrito" aria-label="Ver carrito"
-     class="relative text-gray-700 dark:text-gray-300 hover:text-primary">
-    <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path d="M3 3h2l.4 2M7 13h10l4-8H5.4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-    </svg>
-    <span class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full px-1">0</span>
-  </a>
+      <div class="flex items-center space-x-4">
+        <a id="cart-link" href="/carrito" aria-label="Ver carrito"
+           class="relative text-gray-700 dark:text-gray-300 hover:text-primary">
+          <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path d="M3 3h2l.4 2M7 13h10l4-8H5.4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full px-1">0</span>
+        </a>
 
-  <!-- Lupa (solo en móvil) -->
-  <a href="#hero" aria-label="Buscar" class="lg:hidden p-2 bg-gray-100 dark:bg-gray-700 rounded-md transition">
-    <svg class="h-6 w-6 text-gray-700 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-            d="M21 21l-4.35-4.35M17 11a6 6 0 11-12 0 6 6 0 0112 0z"/>
-    </svg>
-  </a>
+        <a href="#hero" aria-label="Buscar" class="lg:hidden p-2 bg-gray-100 dark:bg-gray-700 rounded-md transition">
+          <svg class="h-6 w-6 text-gray-700 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M21 21l-4.35-4.35M17 11a6 6 0 11-12 0 6 6 0 0112 0z"/>
+          </svg>
+        </a>
 
-  <!-- Botón menú móvil -->
-  <button @click="mobileOpen = true"
-          class="lg:hidden p-2 bg-gray-100 dark:bg-gray-700 rounded-md focus:outline-none transition"
-          aria-label="Abrir menú">
-    <svg class="h-6 w-6 text-gray-700 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-            d="M4 6h16M4 12h16M4 18h16"/>
-    </svg>
-  </button>
+        <button @click="mobileOpen = true"
+                class="lg:hidden p-2 bg-gray-100 dark:bg-gray-700 rounded-md focus:outline-none transition"
+                aria-label="Abrir menú">
+          <svg class="h-6 w-6 text-gray-700 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
 
-  <!-- Toggle oscuro -->
-  <button id="dark-toggle" class="p-2 bg-white dark:bg-gray-800 rounded-full shadow-md transition">
-    🌙
-  </button>
-</div>
-
+        <button id="dark-toggle" class="p-2 bg-white dark:bg-gray-800 rounded-full shadow-md transition">
+          🌙
+        </button>
+      </div>
     </div>
 
-    <!-- Navegación escritorio: software + dropdown “Otros” -->
+    <!-- Navegación escritorio -->
     <div class="hidden lg:flex max-w-7xl mx-auto justify-between items-center px-6 mt-2">
-      <!-- Enlaces software -->
       <ul id="software-links" class="flex space-x-6 text-gray-800 dark:text-gray-200">
-        <?php
-          $links = [
-            '/software/windows'   => 'Windows',
-            '/software/office'    => 'Office',
-            '/software/antivirus' => 'Antivirus',
-            '/juegos'             => 'Juegos',
-            '/software/autodesk'  => 'Autodesk',
-            '/software/canvas'    => 'Canvas Pro',
-            '/software/adobe-cc'  => 'Adobe CC',
-            '/software/vpn'       => 'VPN',
-            '/noticias/vpn'       => 'Noticias',
-          ];
-          foreach($links as $path => $label):
-            $active = ($current === $path) ? 'border-b-2 border-accent' : '';
-        ?>
-          <li>
-            <a href="<?= $path ?>"
-               class="px-2 py-1 hover:text-accent transition <?= $active ?>">
-              <?= $label ?>
-            </a>
-          </li>
-        <?php endforeach; ?>
+        <li><a href="/software/windows" class="px-2 py-1 hover:text-accent transition">Windows</a></li>
+        <li><a href="/software/office"  class="px-2 py-1 hover:text-accent transition">Office</a></li>
+        <li><a href="/software/antivirus" class="px-2 py-1 hover:text-accent transition">Antivirus</a></li>
+        <li><a href="/juegos"           class="px-2 py-1 hover:text-accent transition">Juegos</a></li>
+        <li><a href="/software/autodesk" class="px-2 py-1 hover:text-accent transition">Autodesk</a></li>
+        <li><a href="/software/canvas"   class="px-2 py-1 hover:text-accent transition">Canvas Pro</a></li>
+        <li><a href="/software/adobe-cc" class="px-2 py-1 hover:text-accent transition">Adobe CC</a></li>
+        <li><a href="/software/vpn"      class="px-2 py-1 hover:text-accent transition">VPN</a></li>
+        <li><a href="/noticias/vpn"      class="px-2 py-1 hover:text-accent transition">Noticias</a></li>
       </ul>
-      <!-- Dropdown Otros -->
       <div x-data="{ openOtros: false }" class="relative">
         <button @click="openOtros = !openOtros"
                 class="flex items-center px-2 py-1 hover:text-accent transition">
@@ -240,33 +207,34 @@
   </header>
 
   <!-- Menú Off-Canvas Móvil -->
-  <div
-    x-show="mobileOpen" x-cloak
-    x-transition:enter="transition-opacity ease-out duration-300"
-    x-transition:enter-start="opacity-0"
-    x-transition:enter-end="opacity-100"
-    x-transition:leave="transition-opacity ease-in duration-200"
-    x-transition:leave-start="opacity-100"
-    x-transition:leave-end="opacity-0"
-    class="fixed inset-0 z-50 flex"
-  >
+  <div x-show="mobileOpen" x-cloak
+       x-transition:enter="transition-opacity ease-out duration-300"
+       x-transition:enter-start="opacity-0"
+       x-transition:enter-end="opacity-100"
+       x-transition:leave="transition-opacity ease-in duration-200"
+       x-transition:leave-start="opacity-100"
+       x-transition:leave-end="opacity-0"
+       class="fixed inset-0 z-50 flex">
     <div class="absolute inset-0 bg-black/50" @click="mobileOpen = false"></div>
-    <div
-      x-show="mobileOpen" x-cloak
-      x-transition:enter="transition transform ease-out duration-300"
-      x-transition:enter-start="-translate-x-full"
-      x-transition:enter-end="translate-x-0"
-      x-transition:leave="transition transform ease-in duration-200"
-      x-transition:leave-start="translate-x-0"
-      x-transition:leave-end="-translate-x-full"
-      class="relative bg-white dark:bg-gray-800 w-64 p-6 overflow-y-auto"
-    >
+    <div x-show="mobileOpen" x-cloak
+         x-transition:enter="transition transform ease-out duration-300"
+         x-transition:enter-start="-translate-x-full"
+         x-transition:enter-end="translate-x-0"
+         x-transition:leave="transition transform ease-in duration-200"
+         x-transition:leave-start="translate-x-0"
+         x-transition:leave-end="-translate-x-full"
+         class="relative bg-white dark:bg-gray-800 w-64 p-6 overflow-y-auto">
       <button class="absolute top-4 right-4" @click="mobileOpen = false">✕</button>
       <nav>
         <ul class="space-y-3 text-gray-800 dark:text-gray-200">
-          <?php foreach($links as $path => $label): ?>
-            <li><a href="<?= $path ?>" class="block hover:text-accent"><?= $label ?></a></li>
-          <?php endforeach; ?>
+          <li><a href="/software/windows" class="block hover:text-accent">Windows</a></li>
+          <li><a href="/software/office"  class="block hover:text-accent">Office</a></li>
+          <li><a href="/software/antivirus" class="block hover:text-accent">Antivirus</a></li>
+          <li><a href="/juegos"           class="block hover:text-accent">Juegos</a></li>
+          <li><a href="/software/autodesk" class="block hover:text-accent">Autodesk</a></li>
+          <li><a href="/software/canvas"   class="block hover:text-accent">Canvas Pro</a></li>
+          <li><a href="/software/adobe-cc" class="block hover:text-accent">Adobe CC</a></li>
+          <li><a href="/software/vpn"      class="block hover:text-accent">VPN</a></li>
           <li><a href="/servicios/mantenimiento" class="block hover:text-accent">Mantenimiento</a></li>
           <li><a href="/servicios/web"           class="block hover:text-accent">Web &amp; Apps</a></li>
           <li><a href="/servicios/streaming"     class="block hover:text-accent">Streaming</a></li>
@@ -279,18 +247,16 @@
   </div>
 
   <!-- HERO -->
-  <section
-    id="hero"
-    class="relative w-full h-[60vh] lg:h-[70vh] mt-44 sm:mt-40 md:mt-36 lg:mt-32 bg-cover bg-center bg-fixed"
-    style="background-image:url('/path/to/hero-bg.jpg')"
-  >
+  <section id="hero"
+           class="relative w-full h-[60vh] lg:h-[70vh] mt-44 sm:mt-40 md:mt-36 lg:mt-32 bg-cover bg-center bg-fixed"
+           style="background-image:url('/path/to/hero-bg.jpg')">
     <div class="absolute inset-0 bg-black/50"></div>
     <div class="relative z-10 flex flex-col items-center justify-center h-full text-center space-y-4 max-w-7xl mx-auto px-6 lg:px-8">
       <h1 class="text-xl sm:text-2xl md:text-4xl lg:text-6xl font-extrabold text-white">
         Aplicaciones Informáticas Integrales
       </h1>
       <p class="text-base sm:text-lg lg:text-2xl text-gray-200 max-w-2xl">
-        Soluciones en Bolivia: licencias oficiales y software con garantia, <strong>facturadas</strong>, entrega instantánea ,atencion y soporte 24/7.
+        Soluciones en Bolivia: licencias oficiales y software con garantía, <strong>facturadas</strong>, entrega instantánea, atención y soporte 24/7.
       </p>
 
       <form action="/buscar" method="GET" class="w-full max-w-lg flex">
@@ -302,8 +268,14 @@
         </button>
       </form>
       <div class="flex flex-wrap justify-center gap-4">
-        <a href="#productos-destacados" class="px-8 py-3 bg-primary hover:bg-primary/90 text-white rounded-full font-semibold text-lg transition focus:outline-none focus:ring-2 focus:ring-primary">Ver Ofertas</a>
-        <a href="#contacto" class="px-8 py-3 bg-white/80 hover:bg-white text-gray-900 rounded-full font-semibold text-lg transition focus:outline-none focus:ring-2 focus:ring-accent">Contáctanos</a>
+        <a href="#productos-destacados"
+           class="px-8 py-3 bg-primary hover:bg-primary/90 text-white rounded-full font-semibold text-lg transition focus:outline-none focus:ring-2 focus:ring-primary">
+          Ver Ofertas
+        </a>
+        <a href="#contacto"
+           class="px-8 py-3 bg-white/80 hover:bg-white text-gray-900 rounded-full font-semibold text-lg transition focus:outline-none focus:ring-2 focus:ring-accent">
+          Contáctanos
+        </a>
       </div>
       <ul class="mt-4 flex flex-wrap justify-center gap-6 text-gray-200 dark:text-gray-300 text-lg">
         <li class="flex items-center gap-2">📲 Código QR</li>
@@ -316,7 +288,8 @@
   </section>
 
   <!-- BENEFICIOS -->
-  <section id="beneficios" aria-label="Nuestros beneficios" class="py-12 mb-8 bg-gradient-to-tr from-primary/5 to-transparent dark:from-accent/10 dark:to-transparent">
+  <section id="beneficios" aria-label="Nuestros beneficios"
+           class="py-12 mb-8 bg-gradient-to-tr from-primary/5 to-transparent dark:from-accent/10 dark:to-transparent">
     <div class="max-w-7xl mx-auto px-6">
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         <div class="bg-white/20 dark:bg-gray-800/60 backdrop-blur-lg rounded-lg shadow-md p-8 flex flex-col justify-between h-full text-center transition focus:outline-none focus:ring-2 focus:ring-accent" data-aos="fade-up">
@@ -329,7 +302,7 @@
           <h4 class="text-xl font-semibold text-primary mb-4 border-l-8 border-accent pl-4">Devolución Garantizada</h4>
           <p class="text-gray-600 dark:text-gray-300">Te devolvemos tu dinero si no funciona.</p>
         </div>
-        <div class="bg-white/20 dark:bg-gray-800/60 backdrop-blur-lg rounded-lg shadow-md p-8 flex flex-col justify-between h-full text-center transition focus:outline-none focus:ring-2 focus:ring-accent" data-aos="fade-up" data-aos-delay="200">  
+        <div class="bg-white/20 dark:bg-gray-800/60 backdrop-blur-lg rounded-lg shadow-md p-8 flex flex-col justify-between h-full text-center transition focus:outline-none focus:ring-2 focus:ring-accent" data-aos="fade-up" data-aos-delay="200">
           <div id="lottie-secure" class="w-24 h-24 mx-auto mb-4"></div>
           <h4 class="text-xl font-semibold text-primary mb-4 border-l-8 border-accent pl-4">Pago Seguro</h4>
           <p class="text-gray-600 dark:text-gray-300">Transacciones SSL protegidas.</p>
@@ -350,30 +323,24 @@
       <div class="grid gap-8 md:grid-cols-3">
         <div class="bg-gray-50 dark:bg-gray-700 rounded-lg shadow-md p-8 flex flex-col items-center text-center space-y-4 hover:shadow-lg transition">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M12 14l9-5-9-5-9 5 9 5z"/>
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M12 14l6.16-3.422A12.083 12.083 0 0112 21.5 12.083 12.083 0 015.84 10.578L12 14z"/>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z"/>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l6.16-3.422A12.083 12.083 0 0112 21.5 12.083 12.083 0 015.84 10.578L12 14z"/>
           </svg>
           <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-100">Misión</h3>
           <p class="text-gray-600 dark:text-gray-300">Impulsar la productividad y seguridad de nuestros clientes con servicios tecnológicos de excelencia.</p>
         </div>
         <div class="bg-gray-50 dark:bg-gray-700 rounded-lg shadow-md p-8 flex flex-col items-center text-center space-y-4 hover:shadow-lg transition">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M2.458 12C3.732 7.943 7.523 5 12 5s8.268 2.943 9.542 7c-1.274 4.057-5.065 7-9.542 7s-8.268-2.943-9.542-7z"/>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5s8.268 2.943 9.542 7c-1.274 4.057-5.065 7-9.542 7s-8.268-2.943-9.542-7z"/>
           </svg>
           <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-100">Visión</h3>
           <p class="text-gray-600 dark:text-gray-300">Ser líderes en integración de software y soporte TI en Bolivia, innovando cada día.</p>
         </div>
         <div class="bg-gray-50 dark:bg-gray-700 rounded-lg shadow-md p-8 flex flex-col items-center text-center space-y-4 hover:shadow-lg transition">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M17 20h5v-2a4 4 0 00-3-3.87M9 20H4v-2a4 4 0 013-3.87"/>
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M16 7a4 4 0 11-8 0 4 4 0 018 0z"/>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a4 4 0 00-3-3.87M9 20H4v-2a4 4 0 013-3.87"/>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0z"/>
           </svg>
           <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-100">Equipo</h3>
           <p class="text-gray-600 dark:text-gray-300">10+ años de experiencia en TI, comprometidos con tu éxito y satisfacción.</p>
@@ -382,155 +349,169 @@
     </div>
   </section>
 
-
-<!-- OFERTAS FLASH -->
-<section id="ofertas-flash"
-         aria-label="Ofertas Flash"
-         class="py-12 mb-8 bg-gradient-to-br from-primary/5 to-transparent dark:from-accent/10 dark:to-transparent">
-  <div class="max-w-7xl mx-auto px-6">
-
-    <!-- Banner “¡Sólo hoy!” -->
-    <div class="text-center mb-4 text-red-600 font-bold uppercase tracking-wider">
-      🔥 ¡Ofertas válidas solo hasta las 14:00! 🔥
-    </div>
-
-    <div class="flex flex-col lg:flex-row items-start gap-6">
-
-      <!-- CONTADOR -->
-      <div x-data="countdownComponent" x-init="init()"
-           class="w-full lg:w-1/4 bg-white dark:bg-gray-700 rounded-lg shadow-md p-6 text-center">
-        <!-- Título con degradado + destellos -->
-      <h2 class="sparkle text-2xl font-bold mb-2
-           bg-gradient-to-r from-primary to-accent
-           bg-clip-text text-transparent">
-  Ofertas Flash
-  <span class="sparkle-dot"></span>
-</h2>
-
-        <p class="text-sm text-gray-600 dark:text-gray-300 mb-4">
-          Descuentos exclusivos por tiempo limitado. ¡No dejes pasar estas oportunidades!
-        </p>
-        <ul class="text-xs text-gray-600 dark:text-gray-300 mb-4 space-y-1 list-inside list-disc">
-          <li>Hasta 70% de descuento</li>
-          <li>Garantía de devolución 30 días</li>
-          <li>Facturación con RUC</li>
-          <li>Soporte 24/7</li>
-        </ul>
-        <div class="grid grid-cols-4 gap-2 text-xl font-mono text-gray-800 dark:text-gray-200 mb-2">
-          <div><span x-text="days">00</span><span class="text-sm ml-1">d</span></div>
-          <div><span x-text="hours">00</span><span class="text-sm ml-1">h</span></div>
-          <div><span x-text="minutes">00</span><span class="text-sm ml-1">m</span></div>
-          <div><span x-text="seconds">00</span><span class="text-sm ml-1">s</span></div>
+  <!-- OFERTAS FLASH -->
+  <section id="ofertas-flash" aria-label="Ofertas Flash"
+           class="py-12 mb-8 bg-gradient-to-br from-primary/5 to-transparent dark:from-accent/10 dark:to-transparent">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-4 text-red-600 font-bold uppercase tracking-wider">
+        🔥 ¡Ofertas válidas solo hasta las 14:00! 🔥
+      </div>
+      <div class="flex flex-col lg:flex-row items-start gap-6">
+        <div x-data="countdownComponent" x-init="init()"
+             class="w-full lg:w-1/4 bg-white dark:bg-gray-700 rounded-lg shadow-md p-6 text-center">
+          <h2 class="sparkle text-2xl font-bold mb-2
+                     bg-gradient-to-r from-primary to-accent
+                     bg-clip-text text-transparent">
+            Ofertas Flash
+            <span class="sparkle-dot"></span>
+          </h2>
+          <p class="text-sm text-gray-600 dark:text-gray-300 mb-4">
+            Descuentos exclusivos por tiempo limitado. ¡No dejes pasar estas oportunidades!
+          </p>
+          <ul class="text-xs text-gray-600 dark:text-gray-300 mb-4 space-y-1 list-inside list-disc">
+            <li>Hasta 70% de descuento</li>
+            <li>Garantía de devolución 30 días</li>
+            <li>Facturación con RUC</li>
+            <li>Soporte 24/7</li>
+          </ul>
+          <div class="grid grid-cols-4 gap-2 text-xl font-mono text-gray-800 dark:text-gray-200 mb-2">
+            <div><span x-text="days">00</span><span class="text-sm ml-1">d</span></div>
+            <div><span x-text="hours">00</span><span class="text-sm ml-1">h</span></div>
+            <div><span x-text="minutes">00</span><span class="text-sm ml-1">m</span></div>
+            <div><span x-text="seconds">00</span><span class="text-sm ml-1">s</span></div>
+          </div>
+          <p class="text-xs text-gray-600 dark:text-gray-300">
+            Termina: <span class="font-semibold">10 jun, 14:00</span>
+          </p>
         </div>
-        <p class="text-xs text-gray-600 dark:text-gray-300">
-          Termina: <span class="font-semibold">10 jun, 14:00</span>
-        </p>
+
+        <div class="w-full lg:w-3/4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="relative bg-white dark:bg-gray-700 rounded-lg shadow-md p-4 flex flex-col items-center text-center">
+            <span class="absolute top-2 left-2 bg-red-500 text-white text-xs font-semibold px-2 py-1 rounded">-30%</span>
+            <img src="http://localhost/App/img/3.png" alt="Windows 10 Pro" class="h-40 w-auto object-contain rounded-md mb-4"/>
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-1">Windows 10 Pro</h3>
+            <div class="flex items-center mb-1">
+              <span class="text-yellow-400">★★★★☆</span>
+              <span class="text-xs text-gray-600 dark:text-gray-300 ml-2">(4.0)</span>
+            </div>
+            <p class="text-gray-500 dark:text-gray-400 line-through text-sm">$69.99</p>
+            <p class="text-xl font-bold text-gray-800 dark:text-gray-100 mb-4">$49.99</p>
+            <a href="#" class="px-4 py-2 bg-accent text-white rounded-lg hover:bg-accent/90 transition">Comprar</a>
+          </div>
+          <div class="relative bg-white dark:bg-gray-700 rounded-lg shadow-md p-4 flex flex-col items-center text-center">
+            <span class="absolute top-2 left-2 bg-red-500 text-white text-xs font-semibold px-2 py-1 rounded">-33%</span>
+            <img src="http://localhost/App/img/4.png" alt="Office 365" class="h-40 w-auto object-contain rounded-md mb-4"/>
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-1">Office 365</h3>
+            <div class="flex items-center mb-1">
+              <span class="text-yellow-400">★★★★☆</span>
+              <span class="text-xs text-gray-600 dark:text-gray-300 ml-2">(4.0)</span>
+            </div>
+            <p class="text-gray-500 dark:text-gray-400 line-through text-sm">$89.99</p>
+            <p class="text-xl font-bold text-gray-800 dark:text-gray-100 mb-4">$59.99</p>
+            <a href="#" class="px-4 py-2 bg-accent text-white rounded-lg hover:bg-accent/90 transition">Comprar</a>
+          </div>
+          <div class="relative bg-white dark:bg-gray-700 rounded-lg shadow-md p-4 flex flex-col items-center text-center">
+            <span class="absolute top-2 left-2 bg-red-500 text-white text-xs font-semibold px-2 py-1 rounded">-30%</span>
+            <img src="http://localhost/App/img/5.png" alt="Windows 11" class="h-40 w-auto object-contain rounded-md mb-4"/>
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-1">Windows 11</h3>
+            <div class="flex items-center mb-1">
+              <span class="text-yellow-400">★★★★☆</span>
+              <span class="text-xs text-gray-600 dark:text-gray-300 ml-2">(4.0)</span>
+            </div>
+            <p class="text-gray-500 dark:text-gray-400 line-through text-sm">$99.99</p>
+            <p class="text-xl font-bold text-gray-800 dark:text-gray-100 mb-4">$69.99</p>
+            <a href="#" class="px-4 py-2 bg-accent text-white rounded-lg hover:bg-accent/90 transition">Comprar</a>
+          </div>
+          <div class="relative bg-white dark:bg-gray-700 rounded-lg shadow-md p-4 flex flex-col items-center text-center">
+            <span class="absolute top-2 left-2 bg-red-500 text-white text-xs font-semibold px-2 py-1 rounded">-33%</span>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDmh0Z8qiQCX1GYuDcNCBAQEUFd02KYP6jXQ&s"
+                 alt="Office 2019"
+                 class="h-40 w-auto object-contain rounded-md mb-4"/>
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-1">Office 2019</h3>
+            <div class="flex items-center mb-1">
+              <span class="text-yellow-400">★★★★☆</span>
+              <span class="text-xs text-gray-600 dark:text-gray-300 ml-2">(4.0)</span>
+            </div>
+            <p class="text-gray-500 dark:text-gray-400 line-through text-sm">$119.99</p>
+            <p class="text-xl font-bold text-gray-800 dark:text-gray-100 mb-4">$79.99</p>
+            <a href="#" class="px-4 py-2 bg-accent text-white rounded-lg hover:bg-accent/90 transition">Comprar</a>
+          </div>
+        </div>
       </div>
-
-      <!-- PRODUCTOS FLASH -->
- <?php
-  // URL base para imágenes locales (si usas nombres de archivo)
-  $baseImgUrl = 'https://appinformaticai.github.io/APP/img';
-
-  // Lista de productos Flash; img puede ser URL absoluta o nombre de archivo
-  $flashProducts = [
-    [
-      'img' => 'App/img/3.png',
-      'title'    => 'Windows 10 Pro',
-      'price'    => '$49.99',
-      'original' => '$69.99',
-      'discount' => 30
-    ],
-    [
-      'img' => 'http://localhost/App/img/4.png',
-      'title'    => 'Office 365',
-      'price'    => '$59.99',
-      'original' => '$89.99',
-      'discount' => 33
-    ],
-    [
-       'img' => 'http://localhost/App/img/5.png',
-      'title'    => 'Windows 11',
-      'price'    => '$69.99',
-      'original' => '$99.99',
-      'discount' => 30
-    ],
-    [
-      'img'      => 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDmh0Z8qiQCX1GYuDcNCBAQEUFd02KYP6jXQ&s',
-      'title'    => 'Office 2019',
-      'price'    => '$79.99',
-      'original' => '$119.99',
-      'discount' => 33
-    ],
-  ];
-?>
-<div class="w-full lg:w-3/4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-  <?php foreach($flashProducts as $p): 
-    // Si img arranca con http o https, úsala tal cual; si no, préndele la base
-    $src = preg_match('/^https?:\/\//', $p['img'])
-           ? $p['img']
-           : $baseImgUrl . $p['img'];
-  ?>
-    <div class="relative bg-white dark:bg-gray-700 rounded-lg shadow-md p-4 flex flex-col items-center text-center">
-      <!-- Descuento -->
-      <span class="absolute top-2 left-2 bg-red-500 text-white text-xs font-semibold px-2 py-1 rounded">
-        -<?= $p['discount'] ?>%
-      </span>
-      <!-- Imagen (h-40 para mantener altura uniforme) -->
-      <img src="<?= htmlspecialchars($src, ENT_QUOTES) ?>"
-           alt="<?= htmlspecialchars($p['title'], ENT_QUOTES) ?>"
-           class="h-40 w-auto object-contain rounded-md mb-4"/>
-      <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-1"><?= $p['title'] ?></h3>
-      <div class="flex items-center mb-1">
-        <span class="text-yellow-400">★★★★☆</span>
-        <span class="text-xs text-gray-600 dark:text-gray-300 ml-2">(4.0)</span>
-      </div>
-      <p class="text-gray-500 dark:text-gray-400 line-through text-sm"><?= $p['original'] ?></p>
-      <p class="text-xl font-bold text-gray-800 dark:text-gray-100 mb-4"><?= $p['price'] ?></p>
-      <a href="#"
-         class="px-4 py-2 bg-accent text-white rounded-lg hover:bg-accent/90 transition">
-        Comprar
-      </a>
     </div>
-  <?php endforeach; ?>
-</div>
-
-
-    </div>
-  </div>
-</section>
-
-
+  </section>
 
   <!-- PRODUCTOS DESTACADOS -->
-  <section id="productos-destacados" aria-label="Productos destacados" class="py-12 mb-8 bg-gradient-to-br from-gray-50 to-transparent dark:from-gray-800 dark:to-transparent">
+  <section id="productos-destacados" aria-label="Productos destacados"
+           class="py-12 mb-8 bg-gradient-to-br from-gray-50 to-transparent dark:from-gray-800 dark:to-transparent">
     <div class="max-w-7xl mx-auto px-6">
       <h2 class="text-3xl font-bold text-gray-800 dark:text-gray-200 mb-6 text-center border-b-8 border-primary w-64 mx-auto pb-3" data-aos="fade-down">
         Productos Destacados
       </h2>
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-6">
-        <?php
-          $products = [
-            ['img'=>'Windows+10+Pro','title'=>'Windows 10 Pro','price'=>'$199.99'],
-            ['img'=>'Office+365','title'=>'Office 365','price'=>'$99.99'],
-            ['img'=>'Kaspersky+Antivirus','title'=>'Kaspersky Antivirus','price'=>'$49.99'],
-            ['img'=>'Adobe+CC','title'=>'Adobe CC','price'=>'$239.99'],
-            ['img'=>'Adobe+CC','title'=>'Adobe CC','price'=>'$239.99'],
-            ['img'=>'AutoCAD+2024','title'=>'AutoCAD 2024','price'=>'$180.00'],
-            ['img'=>'AutoCAD+2024','title'=>'AutoCAD 2024','price'=>'$180.00'],
-          ];
-          foreach($products as $i=>$p):
-        ?>
-          <div class="tilt bg-white dark:bg-gray-700 rounded-lg shadow-md p-6 flex flex-col justify-between h-full transition-transform hover:scale-[1.02]"
-               data-tilt data-aos="fade-up" data-aos-delay="<?= $i*100 ?>">
-            <img src="https://via.placeholder.com/300x200?text=<?= $p['img'] ?>"
-                 alt="<?= $p['title'] ?>" loading="lazy"
-                 class="h-40 w-full object-cover rounded-md mb-4"/>
-            <h3 class="text-lg font-semibold mb-1 text-gray-800 dark:text-gray-100"><?= $p['title'] ?></h3>
-            <p class="text-gray-600 dark:text-gray-400 mb-4"><?= $p['price'] ?></p>
-            <a href="#" class="block text-center bg-accent text-white py-2 rounded-lg transition focus:outline-none focus:ring-2 focus:ring-accent">Comprar</a>
-          </div>
-        <?php endforeach; ?>
+        <div class="tilt bg-white dark:bg-gray-700 rounded-lg shadow-md p-6 flex flex-col justify-between h-full transition-transform hover:scale-[1.02]"
+             data-tilt data-aos="fade-up" data-aos-delay="0">
+          <img src="https://via.placeholder.com/300x200?text=Windows+10+Pro"
+               alt="Windows 10 Pro" loading="lazy"
+               class="h-40 w-full object-cover rounded-md mb-4"/>
+          <h3 class="text-lg font-semibold mb-1 text-gray-800 dark:text-gray-100">Windows 10 Pro</h3>
+          <p class="text-gray-600 dark:text-gray-400 mb-4">$199.99</p>
+          <a href="#" class="block text-center bg-accent text-white py-2 rounded-lg transition focus:outline-none focus:ring-2 focus:ring-accent">Comprar</a>
+        </div>
+        <div class="tilt bg-white dark:bg-gray-700 rounded-lg shadow-md p-6 flex flex-col justify-between h-full transition-transform hover:scale-[1.02]"
+             data-tilt data-aos="fade-up" data-aos-delay="100">
+          <img src="https://via.placeholder.com/300x200?text=Office+365"
+               alt="Office 365" loading="lazy"
+               class="h-40 w-full object-cover rounded-md mb-4"/>
+          <h3 class="text-lg font-semibold mb-1 text-gray-800 dark:text-gray-100">Office 365</h3>
+          <p class="text-gray-600 dark:text-gray-400 mb-4">$99.99</p>
+          <a href="#" class="block text-center bg-accent text-white py-2 rounded-lg transition focus:outline-none focus:ring-2 focus:ring-accent">Comprar</a>
+        </div>
+        <div class="tilt bg-white dark:bg-gray-700 rounded-lg shadow-md p-6 flex flex-col justify-between h-full transition-transform hover:scale-[1.02]"
+             data-tilt data-aos="fade-up" data-aos-delay="200">
+          <img src="https://via.placeholder.com/300x200?text=Kaspersky+Antivirus"
+               alt="Kaspersky Antivirus" loading="lazy"
+               class="h-40 w-full object-cover rounded-md mb-4"/>
+          <h3 class="text-lg font-semibold mb-1 text-gray-800 dark:text-gray-100">Kaspersky Antivirus</h3>
+          <p class="text-gray-600 dark:text-gray-400 mb-4">$49.99</p>
+          <a href="#" class="block text-center bg-accent text-white py-2 rounded-lg transition focus:outline-none focus:ring-2 focus:ring-accent">Comprar</a>
+        </div>
+        <div class="tilt bg-white dark:bg-gray-700 rounded-lg shadow-md p-6 flex flex-col justify-between h-full transition-transform hover:scale-[1.02]"
+             data-tilt data-aos="fade-up" data-aos-delay="300">
+          <img src="https://via.placeholder.com/300x200?text=Adobe+CC"
+               alt="Adobe CC" loading="lazy"
+               class="h-40 w-full object-cover rounded-md mb-4"/>
+          <h3 class="text-lg font-semibold mb-1 text-gray-800 dark:text-gray-100">Adobe CC</h3>
+          <p class="text-gray-600 dark:text-gray-400 mb-4">$239.99</p>
+          <a href="#" class="block text-center bg-accent text-white py-2 rounded-lg transition focus:outline-none focus:ring-2 focus:ring-accent">Comprar</a>
+        </div>
+        <div class="tilt bg-white dark:bg-gray-700 rounded-lg shadow-md p-6 flex flex-col justify-between h-full transition-transform hover:scale-[1.02]"
+             data-tilt data-aos="fade-up" data-aos-delay="400">
+          <img src="https://via.placeholder.com/300x200?text=Adobe+CC"
+               alt="Adobe CC" loading="lazy"
+               class="h-40 w-full object-cover rounded-md mb-4"/>
+          <h3 class="text-lg font-semibold mb-1 text-gray-800 dark:text-gray-100">Adobe CC</h3>
+          <p class="text-gray-600 dark:text-gray-400 mb-4">$239.99</p>
+          <a href="#" class="block text-center bg-accent text-white py-2 rounded-lg transition focus:outline-none focus:ring-2 focus:ring-accent">Comprar</a>
+        </div>
+        <div class="tilt bg-white dark:bg-gray-700 rounded-lg shadow-md p-6 flex flex-col justify-between h-full transition-transform hover:scale-[1.02]"
+             data-tilt data-aos="fade-up" data-aos-delay="500">
+          <img src="https://via.placeholder.com/300x200?text=AutoCAD+2024"
+               alt="AutoCAD 2024" loading="lazy"
+               class="h-40 w-full object-cover rounded-md mb-4"/>
+          <h3 class="text-lg font-semibold mb-1 text-gray-800 dark:text-gray-100">AutoCAD 2024</h3>
+          <p class="text-gray-600 dark:text-gray-400 mb-4">$180.00</p>
+          <a href="#" class="block text-center bg-accent text-white py-2 rounded-lg transition focus:outline-none focus:ring-2 focus:ring-accent">Comprar</a>
+        </div>
+        <div class="tilt bg-white dark:bg-gray-700 rounded-lg shadow-md p-6 flex flex-col justify-between h-full transition-transform hover:scale-[1.02]"
+             data-tilt data-aos="fade-up" data-aos-delay="600">
+          <img src="https://via.placeholder.com/300x200?text=AutoCAD+2024"
+               alt="AutoCAD 2024" loading="lazy"
+               class="h-40 w-full object-cover rounded-md mb-4"/>
+          <h3 class="text-lg font-semibold mb-1 text-gray-800 dark:text-gray-100">AutoCAD 2024</h3>
+          <p class="text-gray-600 dark:text-gray-400 mb-4">$180.00</p>
+          <a href="#" class="block text-center bg-accent text-white py-2 rounded-lg transition focus:outline-none focus:ring-2 focus:ring-accent">Comprar</a>
+        </div>
       </div>
     </div>
   </section>
@@ -538,7 +519,6 @@
   <!-- FOOTER -->
   <footer class="bg-gray-800 dark:bg-gray-900 text-gray-300 dark:text-gray-400 py-12">
     <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-6">
-      <!-- Enlaces -->
       <div>
         <h4 class="text-white font-semibold mb-4">Enlaces</h4>
         <ul class="space-y-2">
@@ -548,7 +528,6 @@
           <li><a href="#contacto" class="hover:text-white focus:outline-none focus:ring-2 focus:ring-accent">Contacto</a></li>
         </ul>
       </div>
-      <!-- Servicios -->
       <div>
         <h4 class="text-white font-semibold mb-4">Servicios</h4>
         <ul class="space-y-2">
@@ -557,7 +536,6 @@
           <li><a href="/servicios/streaming" class="hover:text-white focus:outline-none focus:ring-2 focus:ring-accent">Streaming</a></li>
         </ul>
       </div>
-      <!-- Contacto -->
       <div>
         <h4 class="text-white font-semibold mb-4">Contacto</h4>
         <p>Av. Siempre Viva 123,<br/>La Paz, Bolivia</p>
@@ -568,7 +546,6 @@
           <a href="#" aria-label="LinkedIn" class="hover:text-white focus:outline-none focus:ring-2 focus:ring-accent">🔗</a>
         </div>
       </div>
-      <!-- Suscríbete -->
       <div>
         <h4 class="text-white font-semibold mb-4">Suscríbete</h4>
         <p class="mb-4">Recibe ofertas y novedades en tu correo.</p>
@@ -587,14 +564,12 @@
     </div>
   </footer>
 
-  
   <!-- Scripts: Alpine, AOS, Lottie, Tilt -->
   <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.7.6/lottie.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.7.0/dist/vanilla-tilt.min.js"></script>
   <script>
-    // Scroll: fondo header & logo
     const header = document.getElementById('site-header');
     const logo   = document.getElementById('logo');
     window.addEventListener('scroll', () => {
@@ -612,12 +587,10 @@
         logo.classList.replace('h-8','h-10');
       }
     });
-    // Toggle oscuro
     document.getElementById('dark-toggle').addEventListener('click', () => {
       document.documentElement.classList.toggle('dark');
       localStorage.theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
     });
-    // AOS, Lottie, Tilt
     AOS.init({ once: true, duration: 600 });
     ['instant','moneyback','secure','support'].forEach(id => {
       lottie.loadAnimation({
@@ -634,28 +607,27 @@
     VanillaTilt.init(document.querySelectorAll(".tilt"), { max:15, speed:300, glare:true, "max-glare":0.2 });
   </script>
 
-<!-- Alpine countdown component -->
-<script>
-  document.addEventListener('alpine:init', () => {
-    Alpine.data('countdownComponent', () => ({
-      days: '00', hours: '00', minutes: '00', seconds: '00',
-      // Ajusta tu fecha límite de oferta aquí:
-      deadline: new Date('2025-06-10T14:00:00'),
-      init() {
-        const update = () => {
-          const now    = new Date().getTime();
-          let distance = this.deadline.getTime() - now;
-          if (distance < 0) distance = 0;
-          this.days    = String(Math.floor(distance / (1000*60*60*24))).padStart(2,'0');
-          this.hours   = String(Math.floor((distance / (1000*60*60)) % 24)).padStart(2,'0');
-          this.minutes = String(Math.floor((distance / (1000*60)) % 60)).padStart(2,'0');
-          this.seconds = String(Math.floor((distance / 1000) % 60)).padStart(2,'0');
-        };
-        update();
-        setInterval(update, 1000);
-      }
-    }))
-  });
-</script>
+  <!-- Alpine countdown component -->
+  <script>
+    document.addEventListener('alpine:init', () => {
+      Alpine.data('countdownComponent', () => ({
+        days: '00', hours: '00', minutes: '00', seconds: '00',
+        deadline: new Date('2025-06-10T14:00:00'),
+        init() {
+          const update = () => {
+            const now    = new Date().getTime();
+            let distance = this.deadline.getTime() - now;
+            if (distance < 0) distance = 0;
+            this.days    = String(Math.floor(distance / (1000*60*60*24))).padStart(2,'0');
+            this.hours   = String(Math.floor((distance / (1000*60*60)) % 24)).padStart(2,'0');
+            this.minutes = String(Math.floor((distance / (1000*60)) % 60)).padStart(2,'0');
+            this.seconds = String(Math.floor((distance / 1000) % 60)).padStart(2,'0');
+          };
+          update();
+          setInterval(update, 1000);
+        }
+      }))
+    });
+  </script>
 </body>
 </html>
